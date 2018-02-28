@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-This is the lexing file for Terp
+#This is the lexing file for Terp
 #Trevor Griffin
 ----------------------------------------------------------------------------------
 #Mathematical Variables 
@@ -15,7 +15,7 @@ SQRT = 'SQRT'
 #LOGICAL OPERATORS
 ----------------------------------------------------------------------------------
 BIGGER = 'BIGGER'
-SMALLER = 'SMALLER"
+SMALLER = 'SMALLER'
 SAME = 'SAME' 
 BIGGER_OR_SAME = 'BIGGER_OR_SAME'
 SMALLER_OR_SAME = 'SMALLER_OR_SAME'
@@ -55,7 +55,27 @@ def	lexer(source)
 
 	#function to pop out the found token
 	def popout
-		#--------------
+		#--------------ASK ABOUT THIS FUNCTION
+		results.push(current_result)
+		current_results = ''
+	end
+
+	#loop to continue searching for specific matches to popout
+	while i < source.length do
+	
+		if contains(/\+/) do
+			stepForward
+			popout(PLUS)
+		end
+		elsif contains(/%/) do
+			stepForward
+			popout(MOD)
+		end
+	
+
+#THE REST OF THE MATCHING WILL OCCUR HERE 
+
+		
 	end
 
 end
