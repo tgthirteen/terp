@@ -75,7 +75,7 @@ def	lexer(source)
 
 #THE REST OF THE MATCHING WILL OCCUR HERE 
 
-		
+	#end of while		
 	end
-
+#end of lexer
 end
