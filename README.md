@@ -13,9 +13,9 @@ statement
 
 expr
   : INTEGER
-	| expr (COMBINATION|PERMUTATION)
-	|	expr (DERIVATIVE|INTEGRAL) <!-- is this possible?
-  | expr (SQRT|POWER|LOG)
+  | expr (COMBINATION|PERMUTATION)
+  |	expr (DERIVATIVE|INTEGRAL) <!-- is this possible?
+  | expr (ROOT|POWER|LOG) expr
   | expr (MULTIPLY|DIVIDE|MOD) expr
   | expr (PLUS|MINUS) expr
   | expr (BIGGER|BIGGER_OR_SAME|SMALLER|SMALLER_OR_SAME|SAME|NOT_SAME) expr
@@ -26,8 +26,9 @@ expr
   | expr (PLUS|MINUS) expr
   | expr (BIGGER|BIGGER_OR_SAME|SMALLER|SMALLER_OR_SAME|SAME|NOT_SAME) expr
  
-<!--https://twodee.org/blog/16542
-Tiered system of expressions
+
+<!--Tiered system of expressions
+
 expr
   : additive
 
