@@ -13,21 +13,25 @@ statement
 
 expr
   : INTEGER
-  | expr (COMBINATION|PERMUTATION)
-  |	expr (DERIVATIVE|INTEGRAL) <!-- is this possible?
+	| (SQRT) expr
+  | expr (COMB|PERM)
+  |	expr (DERIVATIVE|INTEGRAL) expr <!-- is this possible?
   | expr (ROOT|POWER|LOG) expr
   | expr (MULTIPLY|DIVIDE|MOD) expr
   | expr (PLUS|MINUS) expr
   | expr (BIGGER|BIGGER_OR_SAME|SMALLER|SMALLER_OR_SAME|SAME|NOT_SAME) expr
   
-  : DOUBLE 
-  | expr (SQRT|POWER)
+  : DOUBLE
+	| (SQRT) expr 
+	| expr (DERIVATIVE|INTEGRAL) expr
+	| expr (ROOT|POWER|LOG) expr
+  | expr (SQRT|POWER) expr
   | expr (MULTIPLY|DIVIDE|MOD) expr
   | expr (PLUS|MINUS) expr
   | expr (BIGGER|BIGGER_OR_SAME|SMALLER|SMALLER_OR_SAME|SAME|NOT_SAME) expr
  
 
-<!--Tiered system of expressions
+<!--Tiered system of expressions-->
 
 expr
   : additive
@@ -39,7 +43,7 @@ multiplicative
   : repetition ((ASTERISK|DIVIDE|MOD) repetition)*
 
 repetition
-	: atom ((SQRT|POWER|LOG) atom)*
+	: atom ((SQRT|ROOT|COMB|PERM|POWER|LOG) atom)*
 
 atom
   : IDENTIFIER
