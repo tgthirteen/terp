@@ -1,4 +1,4 @@
-# terp
+# terp  ---Trevor Griffin and Caleb Oster (Language to be re-named later - But emphasis on mathematical operations)
 program
   : statement* EOF
 
@@ -9,11 +9,13 @@ statement
   | WHILE expr statement* END
   | TO IDENTIFIER LEFT_PARENTHESIS IDENTIFIER* RIGHT_PARENTHESIS statement* END
   | IDENTIFIER LEFT_PARENTHESIS expr* RIGHT_PARENTHESIS
-<!-- STILL NEED ALSO IF FOR AND FOR_EACH
+	<!-- STILL NEED ALSO IF FOR AND FOR_EACH
 
 expr
   : INTEGER
-  | expr (SQRT|POWER)
+	| expr (COMBINATION|PERMUTATION)
+	|	expr (DERIVATIVE|INTEGRAL) <!-- is this possible?
+  | expr (SQRT|POWER|LOG)
   | expr (MULTIPLY|DIVIDE|MOD) expr
   | expr (PLUS|MINUS) expr
   | expr (BIGGER|BIGGER_OR_SAME|SMALLER|SMALLER_OR_SAME|SAME|NOT_SAME) expr
@@ -29,13 +31,15 @@ Tiered system of expressions
 expr
   : additive
 
-<!--
 additive
   : multiplicative ((PLUS|MINUS) multiplicative)*
 
-<!--multiplicative
-  : atom ((ASTERISK|DIVIDE|MOD) atom)*
+multiplicative
+  : repetition ((ASTERISK|DIVIDE|MOD) repetition)*
 
-<!--atom
+repetition
+	: atom ((SQRT|POWER|LOG) atom)*
+
+atom
   : IDENTIFIER
-  | INTEGER-->
+  | INTEGER|DOUBLE
